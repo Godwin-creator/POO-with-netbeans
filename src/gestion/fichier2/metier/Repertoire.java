@@ -18,12 +18,14 @@ public class Repertoire extends Fichier{
     @Serial
     static final long serialVersionUID = -3387516993124229948L;
     private List<Fichier> fichiers = new ArrayList<>();
+
+    Repertoire(String root, Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
             
             
-    Object getFichiers() {
-        
-        return null;
-        
+    public List<Fichier> getFichiers(){
+        return this.fichiers;
     }
 
     @Override

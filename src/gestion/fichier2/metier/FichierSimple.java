@@ -9,11 +9,12 @@ package gestion.fichier2.metier;
  * @author EDOHB
  */
 public class FichierSimple extends Fichier{
-    private String contenu = "";
     
     public FichierSimple(String nom, Repertoire repertoireParent) {
         super(nom, repertoireParent);
     }
+    private String contenu = "";
+
     
     @Override
     public int getTaille() {
@@ -23,12 +24,22 @@ public class FichierSimple extends Fichier{
 
     @Override
     public Fichier copier(Repertoire destination) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        FichierSimple copie = new FichierSimple(this.getNom(), destination);
+        copie.setContenu(this.getContenu());
+        return copie;
     }
 
+    public  String getContenu(){
+        return contenu;
+    }
+    
+    public void setContenu(String contenu){
+        this.contenu = contenu;
+    }
+    
     @Override
     public boolean estRepertoire() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return false;
     }
     
 }
