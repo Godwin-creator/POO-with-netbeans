@@ -4,10 +4,39 @@
  */
 package gestion.fichier2.cli;
 
+import gestion.fichier2.metier.Fichier;
+import gestion.fichier2.metier.Repertoire;
+
 /**
  *
  * @author EDOHB
  */
-public class CmMv {
+public class CmMv extends Commande{
+    private String nomComplet;
+    private String nomCompletDestination;
+
+    @Override
+    public void executer() {
+        try {
+            Repertoire courant = Navigateur.getInstance().getRepertoireCourrant();
+            Fichier cible = courant.getFichier(nomComplet);
+            Repertoire destination = courant.getRepertoire(nomCompletDestination);
+            
+            cible.copier(destination);
+            courant.supprimerElement(nomComplet);
+            System.out.println(nomComplet + " a ete deplace vers " + nomCompletDestination);
+        
+        } catch (Exception e){
+            System.out.println("Le deplacement a echoue");
+        }
+    }
+
+    @Override
+    public void setParametres(String[] parametre) {
+        if (parametre.length >= 2) {
+            this.nomComplet = parametre[0];
+            this.nomCompletDestination = parametre[1];
+        }
+    }
     
 }

@@ -19,7 +19,7 @@ import java.time.LocalDate;
  */
 public abstract class Fichier implements Serializable{
     private LocalDate dateCreation;
-    private String nom;
+    String nom;
     private Repertoire repertoireParent;
     
     private static Repertoire root = new Repertoire("\\root", null);

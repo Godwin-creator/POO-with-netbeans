@@ -16,7 +16,7 @@ public class CmCD extends Commande{
     @Override
     public void executer(){
         try {
-            Navigateur.getInstance().changerRepertoire(nomComplet);
+            Navigateur.getInstance().changeRepertoire(nomComplet);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }

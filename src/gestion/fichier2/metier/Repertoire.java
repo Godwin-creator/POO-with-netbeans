@@ -4,7 +4,7 @@
  */
 package gestion.fichier2.metier;
 
-import java.io.Serial;
+import java.io.FileNotFoundException;
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,12 @@ public class Repertoire extends Fichier{
 
     @Override
     public Fichier copier(Repertoire destination) {
+        Repertoire nouveauDossier = new Repertoire(this.getNom(), destination);
         
+        for (Fichier f : this.fichiers) {
+            f.copier(nouveauDossier);
+        }
+        return nouveauDossier;
     }
 
     @Override
@@ -53,8 +58,13 @@ public class Repertoire extends Fichier{
         }
     }
 
-    public Repertoire getRepertoire(String nomComplet) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Repertoire getRepertoire(String nom) throws FileNotFoundException{
+        for (Fichier f : fichiers) {
+            if (f.getNom() != null && f.getNom().equals(nom) && f.estRepertoire()){
+                return (Repertoire)f ;
+            }
+        }
+        throw new FileNotFoundException("Le repertoire n'existe pas");
     }
 
     public boolean existeFichierSimple(String nom) {
@@ -88,5 +98,29 @@ public class Repertoire extends Fichier{
         }
         return false;
     }
+
+    public Fichier getFichier(String nom) throws FileNotFoundException{
+        if (nom == null) throw new FileNotFoundException("Le nom est inavlide");
+        
+        for (Fichier f : fichiers) {
+            if (f.getNom() != null && f.getNom().equals(nom)) {
+                return f;
+            }
+        }
+        throw new FileNotFoundException("Le fichier " + nom + " est introuvable dans ce rep");
+    }
+
+    public boolean supprimerElement(String nom) {
+        if (nom == null) {
+            return false;
+        }
+        return fichiers.removeIf(f -> f.getNom() != null && f.getNom().equals(nom));
+    }
+    
+    //Avec la cmde cp on peut un fichier d'un dossier et le coller dans le mm dossier
+    public void ajouterFichier(Fichier f){
+        fichiers.add(f);
+    }
+    
     
 }

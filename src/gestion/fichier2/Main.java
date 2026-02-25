@@ -33,7 +33,7 @@ public class Main {
         Navigateur.getInstance().setRepertoireCourant(Fichier.getRoot());
         
         while (true) {            
-            String chemin = "C:\\Users\\EDOHB\\" + Navigateur.getInstance().getRepertoireCourant().getNomComplet() + ">";
+            String chemin = "C:\\Users\\EDOHB\\" + Navigateur.getInstance().getRepertoireCourrant().getNomComplet() + ">";
             
             System.out.println(chemin);
             String strCmde = clavier.nextLine();

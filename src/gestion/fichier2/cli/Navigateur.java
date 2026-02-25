@@ -23,6 +23,10 @@ public class Navigateur {
         return instance;
     }
     
+    public void setRepertoireCourant(Repertoire repertoireCourant){
+        this.repertoireCourrant = repertoireCourant;
+    }
+    
     
     public Repertoire getRepertoireCourrant(){
         return this.repertoireCourrant;
