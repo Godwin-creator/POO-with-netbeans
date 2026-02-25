@@ -12,13 +12,16 @@ import java.io.FileNotFoundException;
  * @author EDOHB
  */
 public class Navigateur {
-    
-    private Repertoire repertoireCourant;
+    private Repertoire repertoireCourrant;
 
     public static Object getInstance() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    private Repertoire repertoireCourrant;
+    
+    
+    public Repertoire getRepertoireCourrant(){
+        return this.repertoireCourrant;
+    }
     
     public void changeRepertoire(String nom) throws FileNotFoundException{
         if(nom == null){
