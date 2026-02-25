@@ -12,10 +12,15 @@ import java.io.FileNotFoundException;
  * @author EDOHB
  */
 public class Navigateur {
+    private static Navigateur instance;
     private Repertoire repertoireCourrant;
+    
+    static {
+        instance = new Navigateur();
+    }
 
-    public static Object getInstance() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static Navigateur getInstance() {
+        return instance;
     }
     
     

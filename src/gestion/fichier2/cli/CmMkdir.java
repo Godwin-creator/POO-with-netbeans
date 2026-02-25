@@ -4,10 +4,35 @@
  */
 package gestion.fichier2.cli;
 
+import gestion.fichier2.metier.Repertoire;
+
 /**
  *
  * @author EDOHB
  */
-public class CmMkdir {
+public class CmMkdir extends Commande{
+    
+    private String nom;
+
+    @Override
+    public void executer() {
+        if (nom == null || nom.trim().isEmpty()) {
+            System.out.println("Precisez le nom du dossier a creer");
+            return;
+        }
+        
+        Repertoire courant = Navigateur.getInstance().getRepertoireCourrant();
+        if(!courant.existeRepertoire(nom)){
+            courant.ajouterRepertoire(nom);
+            System.out.println("Repertoire"+nom+" cree avec succes");
+        } else {
+            System.out.println("Le repertoire "+nom+" existe deja");
+        }
+    }
+
+    @Override
+    public void setParametres(String[] parametre) {
+        this.nom = parametre[0];
+    }
     
 }

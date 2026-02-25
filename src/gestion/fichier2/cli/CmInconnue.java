@@ -8,6 +8,15 @@ package gestion.fichier2.cli;
  *
  * @author EDOHB
  */
-public class CmInconnue {
+public class CmInconnue extends Commande{
+
+    @Override
+    public void executer() {
+        System.out.println("Commande Inconnue");
+    }
+
+    @Override
+    public void setParametres(String[] parametre) {
+    }
     
 }

@@ -80,6 +80,6 @@ public abstract class Fichier implements Serializable{
         if(repertoireParent == null){
             return this.nom;
         }
-        return repertoireParent.getNomComplet()
+        return repertoireParent.getNomComplet() + "\\" + this.nom;
     }
 }

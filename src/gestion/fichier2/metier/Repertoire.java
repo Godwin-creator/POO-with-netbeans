@@ -19,8 +19,8 @@ public class Repertoire extends Fichier{
     static final long serialVersionUID = -3387516993124229948L;
     private List<Fichier> fichiers = new ArrayList<>();
 
-    Repertoire(String root, Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Repertoire(String nom, Repertoire repertoireParent) {
+        super (nom, repertoireParent);
     }
             
             
@@ -30,25 +30,63 @@ public class Repertoire extends Fichier{
 
     @Override
     public Fichier copier(Repertoire destination) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public int getTaille() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int taille = 0;
+        for (Fichier f : fichiers) {
+            taille = taille + f.getTaille();
+        }
+        return taille;
     }
 
     @Override
     public boolean estRepertoire() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return true;
     }
 
     public void AfficherContenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for (Fichier f : fichiers) {
+            System.out.println(f.getNom()+ "\n");
+        }
     }
 
     public Repertoire getRepertoire(String nomComplet) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public boolean existeFichierSimple(String nom) {
+        if (nom == null){
+            return false;
+        }
+        for (Fichier f : fichiers) {
+            if (f.getNom() != null && f.getNom().equals(nom) && !f.estRepertoire()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void ajouterFichierSimple(String nom) {
+        new FichierSimple(nom, this);
+    }
+
+    public void ajouterRepertoire(String nom) {
+        new Repertoire(nom, this);
+    }
+
+    public boolean existeRepertoire(String nom) {
+        if (nom == null) {
+            return false;
+        }
+        for (Fichier f : fichiers) {
+            if (f.getNom() != null & f.getNom().equals(nom) && f.estRepertoire()) {
+                return true;
+            }
+        }
+        return false;
     }
     
 }
