@@ -8,6 +8,6 @@ package gestion.fichier2.cli;
  *
  * @author EDOHB
  */
-public class CmQuitter {
+public class CmQuitter extends Commande{
     
 }

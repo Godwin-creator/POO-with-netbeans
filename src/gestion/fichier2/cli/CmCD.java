@@ -4,11 +4,27 @@
  */
 package gestion.fichier2.cli;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author EDOHB
  */
-public class CmCD {
-
+public class CmCD extends Commande{
+    public String nomComplet;
     
+    @Override
+    public void executer(){
+        try {
+            Navigateur.getInstance().changerRepertoire(nomComplet);
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    @Override
+    public void setParametres(String[] parametres){
+        this.nomComplet = parametres[0];
+    }
+
 }
