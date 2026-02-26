@@ -23,6 +23,11 @@ public abstract class Fichier implements Serializable{
     private Repertoire repertoireParent;
     
     private static Repertoire root = new Repertoire("\\root", null);
+    
+    public static Repertoire getRoot(){
+        return root;
+    }
+    
     public static final String path = "C:\\Users\\EDOHB\\OneDrive\\Documents\\EPL\\Cours S3\\Programmation orientée objet\\ME\\gestion-fichier2\\fichier.ser";
 
     public abstract Fichier copier(Repertoire destination);
@@ -65,10 +70,6 @@ public abstract class Fichier implements Serializable{
         }
     }
     
-    public static Repertoire getRoot(){
-        return root;
-    }
-    
     public abstract int getTaille();
     public abstract boolean estRepertoire();
     
@@ -81,5 +82,9 @@ public abstract class Fichier implements Serializable{
             return this.nom;
         }
         return repertoireParent.getNomComplet() + "\\" + this.nom;
+    }
+    
+    public Repertoire getRepertoireParent(){
+        return repertoireParent;
     }
 }

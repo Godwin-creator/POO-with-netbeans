@@ -18,12 +18,12 @@ public class CmMv extends Commande{
     @Override
     public void executer() {
         try {
-            Repertoire courant = Navigateur.getInstance().getRepertoireCourrant();
-            Fichier cible = courant.getFichier(nomComplet);
-            Repertoire destination = courant.getRepertoire(nomCompletDestination);
+            Repertoire courrant = Navigateur.getInstance().getRepertoireCourrant();
+            Fichier cible = courrant.getFichier(nomComplet);
+            Repertoire destination = courrant.getRepertoire(nomCompletDestination);
             
             cible.copier(destination);
-            courant.supprimerElement(nomComplet);
+            courrant.supprimerElement(nomComplet);
             System.out.println(nomComplet + " a ete deplace vers " + nomCompletDestination);
         
         } catch (Exception e){

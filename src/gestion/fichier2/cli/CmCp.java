@@ -23,9 +23,9 @@ public class CmCp extends Commande{
         }
         
         try {
-            Repertoire courant = Navigateur.getInstance().getRepertoireCourrant();
-            Fichier cible = courant.getFichier(nomComplet);
-            Repertoire destination = courant.getRepertoire(nomCompletDestination);
+            Repertoire courrant = Navigateur.getInstance().getRepertoireCourrant();
+            Fichier cible = courrant.getFichier(nomComplet);
+            Repertoire destination = courrant.getRepertoire(nomCompletDestination);
             
             cible.copier(destination);
             System.out.println(nomComplet + " a ete copie dans " + nomCompletDestination + " avec succes.");

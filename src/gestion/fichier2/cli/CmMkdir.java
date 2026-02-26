@@ -21,10 +21,10 @@ public class CmMkdir extends Commande{
             return;
         }
         
-        Repertoire courant = Navigateur.getInstance().getRepertoireCourrant();
-        if(!courant.existeRepertoire(nom)){
-            courant.ajouterRepertoire(nom);
-            System.out.println("Repertoire"+nom+" cree avec succes");
+        Repertoire courrant = Navigateur.getInstance().getRepertoireCourrant();
+        if(!courrant.existeRepertoire(nom)){
+            courrant.ajouterRepertoire(nom);
+            System.out.println("Repertoire "+nom+" cree avec succes");
         } else {
             System.out.println("Le repertoire "+nom+" existe deja");
         }

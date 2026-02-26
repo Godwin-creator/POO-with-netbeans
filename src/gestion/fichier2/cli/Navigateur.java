@@ -6,6 +6,7 @@ package gestion.fichier2.cli;
 
 import gestion.fichier2.metier.Repertoire;
 import java.io.FileNotFoundException;
+import gestion.fichier2.metier.Fichier;
 
 /**
  *
@@ -18,18 +19,22 @@ public class Navigateur {
     static {
         instance = new Navigateur();
     }
+    
+    private Navigateur(){
+        
+    }
 
     public static Navigateur getInstance() {
         return instance;
     }
     
-    public void setRepertoireCourant(Repertoire repertoireCourant){
-        this.repertoireCourrant = repertoireCourant;
+    public Repertoire getRepertoireCourrant(){
+        return this.repertoireCourrant;
     }
     
     
-    public Repertoire getRepertoireCourrant(){
-        return this.repertoireCourrant;
+    public void setRepertoireCourrant(Repertoire repertoireCourrant){
+        this.repertoireCourrant = repertoireCourrant;
     }
     
     public void changeRepertoire(String nom) throws FileNotFoundException{
@@ -39,8 +44,31 @@ public class Navigateur {
         } 
         
         if(nom.equals(".")){
+            return;
         }
         
+        String[] nomsRepertoire = nom.split("/");
+        Repertoire rep = this.repertoireCourrant;
+        
+        try {
+            changeRepertoire(nomsRepertoire);
+        } catch (FileNotFoundException e) {
+            this.repertoireCourrant = rep;
+            throw e;
+        }
     }
     
+    public void changeRepertoire(String[] nomsRepertoire) throws FileNotFoundException{
+        for (String nomRep : nomsRepertoire) {
+            if(nomRep.equals("..") && this.repertoireCourrant.getRepertoireParent() != null){
+                this.repertoireCourrant = this.repertoireCourrant.getRepertoireParent();
+                continue;
+            }
+            this.repertoireCourrant = this.repertoireCourrant.getRepertoire(nomRep);
+        }
+    }
+    
+    public void copier (Repertoire source){
+        source = this.repertoireCourrant;
+    }
 }

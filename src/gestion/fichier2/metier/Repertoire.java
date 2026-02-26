@@ -107,7 +107,7 @@ public class Repertoire extends Fichier{
                 return f;
             }
         }
-        throw new FileNotFoundException("Le fichier " + nom + " est introuvable dans ce rep");
+        throw new FileNotFoundException("Le fichier " + nom + " introuvable");
     }
 
     public boolean supprimerElement(String nom) {
@@ -117,10 +117,9 @@ public class Repertoire extends Fichier{
         return fichiers.removeIf(f -> f.getNom() != null && f.getNom().equals(nom));
     }
     
-    //Avec la cmde cp on peut un fichier d'un dossier et le coller dans le mm dossier
     public void ajouterFichier(Fichier f){
         fichiers.add(f);
     }
-    
+
     
 }

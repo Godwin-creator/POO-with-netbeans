@@ -30,12 +30,12 @@ public class Main {
             e.printStackTrace();
         }
         
-        Navigateur.getInstance().setRepertoireCourant(Fichier.getRoot());
+        Navigateur.getInstance().setRepertoireCourrant(Fichier.getRoot());
         
         while (true) {            
             String chemin = "C:\\Users\\EDOHB\\" + Navigateur.getInstance().getRepertoireCourrant().getNomComplet() + ">";
             
-            System.out.println(chemin);
+            System.out.print(chemin);
             String strCmde = clavier.nextLine();
             Commande commande = parseur.parser(strCmde);
             commande.executer();

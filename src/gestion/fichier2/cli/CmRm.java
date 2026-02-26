@@ -20,9 +20,9 @@ public class CmRm extends Commande{
             System.out.println("Suivez la synthase : RM 'nom_du_fichier_a_supprimer'");
             return;
         }
-    Repertoire courant = Navigateur.getInstance().getRepertoireCourrant();
+    Repertoire courrant = Navigateur.getInstance().getRepertoireCourrant();
 
-        if (courant.supprimerElement(cible)) {
+        if (courrant.supprimerElement(cible)) {
             System.out.println(cible + " supprime avec succes.");
         } else{
             System.out.println(cible + " n'existe pas.");

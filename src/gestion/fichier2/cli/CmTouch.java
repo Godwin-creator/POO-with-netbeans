@@ -21,10 +21,10 @@ public class CmTouch extends Commande{
             return;
         }
         
-        Repertoire courant = Navigateur.getInstance().getRepertoireCourrant();
-        if (!courant.existeFichierSimple(nom)) {
-            courant.ajouterFichierSimple(nom);
-            System.out.println("Fichier simple "+nom+"cree avec succes");
+        Repertoire courrant = Navigateur.getInstance().getRepertoireCourrant();
+        if (!courrant.existeFichierSimple(nom)) {
+            courrant.ajouterFichierSimple(nom);
+            System.out.println("Fichier simple "+nom+" cree avec succes");
         } else{
             System.out.println(nom+" existe deja.");
         }

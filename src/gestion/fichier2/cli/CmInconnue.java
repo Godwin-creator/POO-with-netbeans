@@ -17,6 +17,7 @@ public class CmInconnue extends Commande{
 
     @Override
     public void setParametres(String[] parametre) {
+        
     }
     
 }

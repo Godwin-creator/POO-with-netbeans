@@ -12,7 +12,6 @@ public abstract class Commande {
     
     public abstract void executer();
     
-    public abstract void setParametres(String[] parametre);
-    
+    public abstract void setParametres(String[] parametre);   
 
 }
